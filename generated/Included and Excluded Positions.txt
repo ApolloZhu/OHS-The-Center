@@ -1,0 +1,77 @@
+Included:
+
+Instructional Assistant
+Adapted Physical Ed Teacher
+Art Teacher
+Biology Teacher
+Bus Coop Office Ed Teacher
+Business and Info Tech Teacher
+Career and Transition Teacher
+Chemistry Teacher
+Chinese FLES Teacher
+Chinese Language Teacher
+ESOL Teacher
+Emotional Disabilities Teacher
+English Teacher
+French Language Teacher
+Geosystems Teacher
+Health and Phys Ed Teacher
+History and Social Studies Teacher
+Itinerant Music Strings Teacher
+Latin Language Teacher
+Learning Disabilities Teacher
+Marketing Ed Teacher
+Mathematics Teacher
+Multiple Disabilities Teacher
+Music Teacher
+Physics Teacher
+Reading Teacher
+Spanish Language Teacher
+Speech and Drama Teacher
+Technology Education Teacher
+WAT Teacher
+
+
+
+Excluded:
+
+Substitute Teacher
+Admin Assistant I
+Assessment Coach
+Assistant Building Supervisor
+Assistant Dir Student Act
+Assistant Principal I/II
+Athletic/Academic Supplement
+Band Director
+Building Supervisor III
+Career Center Specialist
+Certified Athletic Trainer
+Custodian I
+Custodian II
+Dir Student Activities
+Director- Student Services
+Educ Spec Library
+Finance Technician II/III/IV
+Food Services Kitchen Manager III
+Food Services Worker
+Head Librarian
+Hourly
+Instructional Coach
+Interim Principal
+Librarian
+Office Assistant
+Operating Engineer II (B)
+Parent Liaison - Hourly
+Psychologist
+Public Health Attendant
+Public Health Training Assistant
+Safety and Security Assistant
+Safety and Security Specialist
+School Based Technology Specialist
+School Counselor
+Social Worker
+Speech Language Pathologist
+Student Info Assistant III/IV
+Systems of Support Advisor
+Tech Resource Teacher Special Education
+Technology Support Specialist
