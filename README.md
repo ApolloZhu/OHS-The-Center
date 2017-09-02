@@ -2,8 +2,13 @@
 
 Less repetitive work, more productive tutoring.
 
-## Catalog
+## Programs
 
 |File|Usage|Output|
 |--|--|--|
 |[fetch_teacher_info.py](./fetch_teacher_info.py)|Fetch teacher(staff)s' information from the [Oakton website](https://oaktonhs.fcps.edu/staff-directory)|[OHS Teachers 2017-2018.xls](./generated/OHS%20Teachers%202017-2018.xls),<br />[Included and Excluded Positions.txt](./generated/Included%20and%20Excluded%20Positions.txt)|
+
+## Articles
+|Title|TL;DR|
+|--|--|
+|[Automatically Calculate `# Sessions`](./articles/auto-session-count.md)|`COUNTA` formula|
