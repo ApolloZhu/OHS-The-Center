@@ -1,4 +1,4 @@
-# Automatically Calculate `# Sessions`
+# Automatically Calculate # Sessions
 
 ![](https://raw.githubusercontent.com/ApolloZhu/OHS-The-Center/master/images/auto-session-count/1.png)
 
