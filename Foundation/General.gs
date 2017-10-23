@@ -1,5 +1,5 @@
-/** 
- * Key for excessing the email address filled in the form from the map  
+/**
+ * Key for accessing the email address filled in the form from the map
  * created using Foundation.mapOfTitlesToItemResponsesOfLastResponseFromFormURL.
  */
 var kRespondentEmailAddress = "Email Address"
@@ -14,15 +14,19 @@ var kRespondentEmailAddress = "Email Address"
  * var email = responses[kRespondentEmailAddress]
  *
  * @param formURL: url to the form.
- * @return an object, with titles of questions as keys and their corresponding reponses as values.
+ * @return an object, with titles of questions as keys and
+ * their corresponding responses as values.
  */
 function mapOfTitlesToItemResponsesOfLastResponseFromFormURL(formURL) {
+  /** @author Michele Wang */
   var form = FormApp.openByUrl(formURL)
   var formResponses = form.getResponses() // array
   if (formResponses.length < 1) return null
-  var formResponse = formResponses[formResponses.length - 1] // last form response
+  // last form response:
+  var formResponse = formResponses[formResponses.length - 1]
   var itemResponses = formResponse.getItemResponses() //array
-  var map = itemResponses.reduce(function(output, response) {
+  /** @author Apollo Zhu */
+  var map = itemResponses.reduce(function (output, response) {
     output[response.getItem().getTitle()] = response.getResponse()
     return output
   }, {})
@@ -34,23 +38,36 @@ function mapOfTitlesToItemResponsesOfLastResponseFromFormURL(formURL) {
 }
 
 /**
- * Formats an arbitary amount of arguments into .
- * @return Empty string if no argument, or String of form: A, B, ..., and C
+ * Formats an arbitrary amount of arguments into.
+ * @return Empty string if no argument,
+ * or String of form: A, B, ..., and C
  */
 function descriptionForList() {
+  // Special Cases
   if (!arguments) return ""
-  if (arguments.length == 1 && Array.isArray(arguments[0])) {
+  if (arguments.length == 1
+    && Array.isArray(arguments[0]))
     arguments = arguments[0]
+  if (arguments.length == 1) return arguments
+  if (arguments.length == 2) {
+    return arguments[0] + " and " + arguments[1]
   }
-  if (arguments.length == 1) return arguments;
-  if (arguments.length == 2) return arguments[0] + " and " + arguments[1];
-
-  var output = arguments[0]
-  for (var i = 1; i < arguments.length - 1; i++) {
+  // Construct A, B, ..., and Z
+  var output = ""
+  for (var i = 0; i < arguments.length - 1; i++) {
     if (arguments[i]) {
-      output += ", " + arguments[i]
+      output += arguments[i] + ", "
     }
   }
-  output += ", and " + arguments[arguments.length - 1]
-  return output
+  return output + "and " + arguments[arguments.length - 1]
+}
+
+function joinPathParameters(parameters) {
+  if (!parameters) return ""
+  var list = []
+  for (var key in parameters) {
+    var value = encodeURIComponent(parameters[key])
+    if (value) list.push(key + "=" + value)
+  }
+  return list.join("&")
 }

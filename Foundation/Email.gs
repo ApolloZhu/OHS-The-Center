@@ -3,16 +3,18 @@ var DEBUG_EMAIL_ADDRESS = "public-apollonian@outlook.com"
 /** Email list: center teachers. Current ones are for Ms. Lin and Ms. Brady. */
 var CENTER_TEACHERS_EMAILS = stringEmailListByJoiningEmailAddresses("slin1@fcps.edu", "mpbrady1@fcps.edu")
 
+var CENTER_EMAIL = "ohsthecenter@gmail.com"
+
 /**
- * Send an email. 
+ * Send an email.
  * Use Foundation.stringEmailListByJoiningEmailAddresses(FromArray) to help you construct email lists as a single String.
  *
- * @param DEBUG false to send email to the specified email;
+ * @param DEBUG false to send email to the specified email, or
  *              true  to send email to the DEBUG_EMAIL_ADDRESS specified in Foundation/Email.gs.
  * @param email   email (list) to send to.
  * @param subject subject of the email.
  * @param body    body of the email.
- * @param cc      email (list) to cc.
+ * @param cc      email (list) to cc, if applicable
  */
 function sendEmail(DEBUG, email, subject, body, cc) {
   MailApp.sendEmail(DEBUG ? DEBUG_EMAIL_ADDRESS : email, subject, body, {
