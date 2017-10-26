@@ -18,12 +18,19 @@ var kRespondentEmailAddress = "Email Address"
  * their corresponding responses as values.
  */
 function mapOfTitlesToItemResponsesOfLastResponseFromFormURL(formURL) {
+  return mapOfTitlesToItemResponsesOfResponseAtIndexFromFormURL(-1, formURL)
+}
+
+function mapOfTitlesToItemResponsesOfResponseAtIndexFromFormURL(index, formURL) {
   /** @author Michele Wang */
   var form = FormApp.openByUrl(formURL)
   var formResponses = form.getResponses() // array
   if (formResponses.length < 1) return null
-  // last form response:
-  var formResponse = formResponses[formResponses.length - 1]
+  // Invalid index: redirect to last form response
+  if (!index || index < 0 || index >= formResponses.length) { 
+    index = formResponses.length - 1
+  }
+  var formResponse = formResponses[index]
   var itemResponses = formResponse.getItemResponses() //array
   /** @author Apollo Zhu */
   var map = itemResponses.reduce(function (output, response) {
@@ -70,4 +77,8 @@ function joinPathParameters(parameters) {
     if (value) list.push(key + "=" + value)
   }
   return list.join("&")
+}
+
+String.prototype.includes = function(substring) {
+  return this.indexOf(substring) != -1
 }
