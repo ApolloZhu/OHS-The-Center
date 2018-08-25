@@ -1,5 +1,12 @@
-# The index of the last page of staffs.
-LAST_PAGE = 27
+"""
+To run this program, make sure you have python installed,
+then open cmd, PowerShell, or Terminal, type in:
+
+pip install beautifulsoup4 requests xlwt
+python fetch_teacher_info.py
+
+You'll find the files in the OUTPUT_DIRECTORY specified below.
+"""
 
 # If disable filter, either False or True
 # MUST Capitalize the first letter:
@@ -12,7 +19,8 @@ POSITIONS_FILE_NAME = "Included and Excluded Positions"
 OUTPUT_DIRECTORY = "generated"  # use "" for current folder
 
 # This program extract all teachers with position
-# ended with the word "Teacher", but you can specify
+# containing the word "Teacher"
+# but you can specify it to:
 
 # Don't include these teachers
 NOT_TO_INCLUDE = [
@@ -23,7 +31,7 @@ NOT_TO_INCLUDE = [
     # Add Above
 ]
 
-# Included these positions that don't end with the word "Teacher":
+# Include these positions that don't contain the word "Teacher":
 ADDITIONALLY_INCLUDE = [
     "Instructional Assistant",
     # Example: "School Counselor",
@@ -37,9 +45,23 @@ ADDITIONALLY_INCLUDE = [
 # DON NOT TOUCH THE CODE BELOW!      #
 ######################################
 
-import datetime
+def extractRole(position):
+    """
+    This function trims a teacher's position
+    and returns the essential role.
+
+    Note: I still don't quite understand why we have
+    middle school teacher in Oakton High.
+    """
+    return position \
+        .replace(", High School", "") \
+        .replace(", HS", "") \
+        .replace(", MS/HS", "") \
+        .replace(", MS", "") \
+        .split("-")[0].strip()
+
+import datetime, os, re
 from bs4 import BeautifulSoup
-import os
 from requests import get
 from xlwt import Workbook
 
@@ -62,24 +84,36 @@ def wsWriteLine(*arg):
     wsR += 1
 
 
-wsWriteLine("Teacher", "Role", "Email")  # Header
-for i in range(LAST_PAGE + 1):
+def fetchNumPages():
+    r = get("https://oaktonhs.fcps.edu/staff-directory")
+    soup = BeautifulSoup(r.text, "html.parser")
+    header = list(soup.find_all('h2')[-1].stripped_strings)[0]
+    m = re.search('(?<=out of )\d+', header)
+    return int((int(m.group(0)) - 1) / 10)
+
+
+print("Processing...")
+wsWriteLine("Last Name", "First Name", "Role", "Email")  # Header
+for i in range(fetchNumPages() + 1):
     r = get("https://oaktonhs.fcps.edu/staff-directory?&page=" + str(i))
     soup = BeautifulSoup(r.text, "html.parser")
     for row in soup.tbody.find_all("tr"):
         cells = list(row.find_all("td"))
-        name = "".join(list(cells[1].strings)).strip()
-        position = list(cells[2].stripped_strings)[0]
-        email = cells[3].a.contents[0]
+        names = list(cells[0].stripped_strings)
+        last = names[0]
+        first = names[-1]
+        position = str(list(cells[1].stripped_strings)[0])
+        role = extractRole(position)
+        email = cells[2].a.contents[0]
         # Filter
         if FETCH_ALL_STAFF \
-            or (position not in NOT_TO_INCLUDE
-                and (position in ADDITIONALLY_INCLUDE
-                     or position.endswith("Teacher"))):
-            wsWriteLine(name, position, email)
-            included.add(position)
+            or (role not in NOT_TO_INCLUDE
+                and (role in ADDITIONALLY_INCLUDE
+                     or "Teacher" in role)):
+            wsWriteLine(last, first, role, email)
+            included.add(role)
         else:
-            excluded.add(position)
+            excluded.add(role)
 
 # Save teachers list
 now = datetime.date.today()
@@ -92,9 +126,9 @@ print("Saved: " + os.path.join(os.getcwd(), FILE_NAME))
 # Custom comparator that pops positions not ended with "Teacher"
 def make_cmp(teachers_last=True):
     def __cmp(a, b):
-        l = a.endswith("Teacher")
-        r = b.endswith("Teacher")
-        if l != r:  # IFF only one of the two ends with "Teacher"
+        l = "Teacher" in a
+        r = "Teacher" in b
+        if l != r:  # IFF only one of the two contains "Teacher"
             if teachers_last:
                 return l and 1 or -1  # The one without "Teacher" is smaller
             else:

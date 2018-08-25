@@ -1,34 +1,32 @@
 Included:
 
 Instructional Assistant
-Adapted Physical Ed Teacher
 Art Teacher
 Biology Teacher
-Bus Coop Office Ed Teacher
-Business and Info Tech Teacher
-Career and Transition Teacher
+Business & Information Technology Teacher
+Business Cooperative Office Education Teacher
+Career & Transition Teacher
 Chemistry Teacher
-Chinese FLES Teacher
 Chinese Language Teacher
 ESOL Teacher
 Emotional Disabilities Teacher
 English Teacher
 French Language Teacher
 Geosystems Teacher
-Health and Phys Ed Teacher
-History and Social Studies Teacher
-Itinerant Music Strings Teacher
+Health & Physical Education Teacher
+History & Social Studies Teacher
+Itinerant Music, Strings, Teacher
 Latin Language Teacher
 Learning Disabilities Teacher
-Marketing Ed Teacher
+Marketing Education Teacher
 Mathematics Teacher
 Multiple Disabilities Teacher
 Music Teacher
 Physics Teacher
-Reading Teacher
 Spanish Language Teacher
-Speech and Drama Teacher
+Speech & Drama Teacher
 Technology Education Teacher
+Technology Resource Teacher, Special Education
 WAT Teacher
 
 
@@ -36,11 +34,12 @@ WAT Teacher
 Excluded:
 
 Substitute Teacher
-Admin Assistant I
+Administrative Assistant I
+Administrative Assistant III
 Assessment Coach
 Assistant Building Supervisor
-Assistant Dir Student Act
-Assistant Principal I/II
+Assistant Principal
+Assistant, Director Student Activities
 Athletic/Academic Supplement
 Band Director
 Building Supervisor III
@@ -48,30 +47,28 @@ Career Center Specialist
 Certified Athletic Trainer
 Custodian I
 Custodian II
-Dir Student Activities
-Director- Student Services
-Educ Spec Library
+Director, Student Activities
+Director, Student Services
 Finance Technician II/III/IV
 Food Services Kitchen Manager III
 Food Services Worker
 Head Librarian
-Hourly
+Hourly Band 1
 Instructional Coach
-Interim Principal
+Interim Assistant School Administrator
 Librarian
 Office Assistant
 Operating Engineer II (B)
-Parent Liaison - Hourly
+Parent Liaison
+Principal
 Psychologist
 Public Health Attendant
 Public Health Training Assistant
-Safety and Security Assistant
-Safety and Security Specialist
+Safety & Security Assistant
+Safety & Security Specialist
 School Based Technology Specialist
 School Counselor
 Social Worker
 Speech Language Pathologist
-Student Info Assistant III/IV
+Student Information Assistant III/IV
 Systems of Support Advisor
-Tech Resource Teacher Special Education
-Technology Support Specialist
